@@ -9,7 +9,7 @@ kaboom({
 })
 
 // Speed identifiers
-const MOVE_SPEED = 120
+const MOVE_SPEED = 120 
 const JUMP_FORCE = 360
 const BIG_JUMP_FORCE = 550
 let CURRENT_JUMP_FORCE = JUMP_FORCE
@@ -24,7 +24,7 @@ let isJumping = true
 
 loadRoot('https://i.imgur.com/')
 loadSprite('coin', 'wbKxhcd.png')
-loadSprite('evil-shroom', 'KPO3fR9.png')
+loadSprite('evil-shroom', 'ygg4qLjh.jpg')//KPO3fR9.png
 loadSprite('brick', 'pogC9x5.png')
 loadSprite('block', 'M6rwarW.png')
 loadSprite('mario', 'Wb1qfhK.png')
@@ -49,16 +49,16 @@ scene("game", ({ level, score }) => {
 
   const maps = [
     [
-      '                                                                                                                               ',
-      '                                                                                                                               ',
-      '                                                                                                                               ',
-      '                                                                                                                               ',
-      '                                                                                                                               ',
-      '     %   =*=%=                                                                                                                 ',
-      '                                                                                                                               ',
-      '                            -+                                                                                                 ',
-      '                    ^   ^   ()                                                                                          x      ',
-      '==============================   ==============================================================================================',
+      '                                                                                             ',
+      '                                                                                             ',
+      '                                                                                             ',
+      '                                                                                             ',
+      '                                                                                             ',
+      '                                                                                             ',
+      '            %  * %                                                                           ',
+      '                    ^   ^   z      z        ()                                               ',
+      '                                     -+                                                      ',
+      '=======================================================!   ===================================',
     ],
     [
       '£                                       £',
@@ -88,11 +88,11 @@ scene("game", ({ level, score }) => {
     ')': [sprite('pipe-bottom-right'), solid(), scale(0.5)],
     '-': [sprite('pipe-top-left'), solid(), scale(0.5), 'pipe'],
     '+': [sprite('pipe-top-right'), solid(), scale(0.5), 'pipe'],
-    '^': [sprite('evil-shroom'), solid(), 'dangerous'],
+    '^': [sprite('evil-shroom'), solid(),scale(0.5), 'dangerous'],
     '#': [sprite('mushroom'), solid(), 'mushroom', body()],
-    '!': [sprite('blue-block'), solid(), scale(0.5)],
+    '!': [sprite('blue-block'), solid(), scale(2)],
     '£': [sprite('blue-brick'), solid(), scale(0.5)],
-    'z': [sprite('blue-evil-shroom'), solid(), scale(0.5), 'dangerous'],
+    'z': [sprite('blue-evil-shroom'), solid(), scale(0.5), 'slowshroom'],
     '@': [sprite('blue-surprise'), solid(), scale(0.5), 'coin-surprise'],
     'x': [sprite('blue-steel'), solid(), scale(0.5)],
 
@@ -100,64 +100,44 @@ scene("game", ({ level, score }) => {
 
   const gameLevel = addLevel(maps[level], levelCfg)
 
-  const scoreLabel = add([
-    text(score),
-    pos(30, 6),
+  let TIME_LEFT = 200
+
+  let timer = add([
+    text(0),
+    pos(160, 6),
     layer('ui'),
     {
-      value: score,
+      time: TIME_LEFT,
     }
   ])
 
-  add([text('level ' + parseInt(level + 1) ), pos(40, 6)])
-  
-  // fonction de gestion du bonus du schroom (taille, durée, hauteur de saut)
-
-  function big() {
-    let timer = 0
-    let isBig = false
-    return {
-      update() {
-        if (isBig) {
-          CURRENT_JUMP_FORCE = BIG_JUMP_FORCE
-          timer -= dt()
-          if (timer <= 0) {
-            this.smallify()
-          }
-        }
-      },
-      isBig() {
-        return isBig
-      },
-      smallify() {
-        this.scale = vec2(1)
-        CURRENT_JUMP_FORCE = JUMP_FORCE
-        timer = 0
-        isBig = false
-      },
-      biggify(time) {
-        this.scale = vec2(2)
-        timer = time
-        isBig = true     
-      }
+  timer.action(()=> {
+    timer.time -= dt()
+    timer.text = timer.time.toFixed(0)
+    if(timer.time <= 0 || timer.time > 200) {
+      go('lose')
     }
-  }
-  // caractéristique player
+  })
 
+  add([text('Battery time left :' ), pos(0, 6)])
+  
+  // caractéristique player
+  
   const player = add([
-    sprite('mario'), solid(),
+    sprite('mario'), 
+    solid(),
     pos(30, 0),
     body(),
     big(),
     origin('bot')
   ])
-
+  
   action('mushroom', (m) => {
     m.move(20, 0)
   })
-
-   // gestion de la box surprise
-
+  
+  // gestion de la box surprise
+  
   player.on("headbump", (obj) => {
     if (obj.is('coin-surprise')) {
       gameLevel.spawn('$', obj.gridPos.sub(0, 1))
@@ -170,11 +150,50 @@ scene("game", ({ level, score }) => {
       gameLevel.spawn('}', obj.gridPos.sub(0,0))
     }
   })
+  
+  // fonction de gestion du bonus du schroom (taille, durée, hauteur de saut)
+
+  function big() {
+    let timer = 0
+    let isBig = false
+    return {
+      update() {
+        if (isBig) {
+          CURRENT_JUMP_FORCE = BIG_JUMP_FORCE + time.time * 3
+          timer -= dt()
+          if (timer <= 0) {
+            this.normalmode()
+          }
+        }
+      },
+      isBig() {
+        return isBig
+      },
+      normalmode() {
+        CURRENT_JUMP_FORCE = JUMP_FORCE
+        timer = 0
+        isBig = false
+      },
+      planemode(time) {
+        timer = time
+        isBig = true     
+      }
+    }
+  }
+
+// gestion des collisions du joueur
 
   player.collides('mushroom', (m) => {
     destroy(m)
-    player.biggify(6)
+    player.planemode(6)
   })
+
+  player.collides('slowshroom', (s)=> {
+    destroy(s)
+    timer.time -= 20 
+
+  })
+
 
   player.collides('coin', (c) => {
     destroy(c)
@@ -190,34 +209,33 @@ scene("game", ({ level, score }) => {
     if (isJumping) {
       destroy(d)
     } else {
-      go('lose', { score: scoreLabel.value})
+      go('lose')
     }
   })
 
   player.action(() => {
     camPos(player.pos)
     if (player.pos.y >= FALL_DEATH) {
-      go('lose', { score: scoreLabel.value})
+      go('lose')
     }
   })
 
   player.collides('pipe', () => {
-    keyPress('down', () => {
+    keyPress('s', () => {
       go('game', {
         level: (level + 1) % maps.length,
-        score: scoreLabel.value
       })
     })
   })
 
   // gestion des déplacements du joueur
 
-  keyDown('left', () => {
-    player.move(-MOVE_SPEED, 0)
+  keyDown('q', () => {
+    player.move(-((MOVE_SPEED+timer.time)/2), 0)
   })
 
-  keyDown('right', () => {
-    player.move(MOVE_SPEED, 0)
+  keyDown('d', () => {
+    player.move((MOVE_SPEED+timer.time)/2, 0)
   })
 
   player.action(() => {
@@ -232,10 +250,41 @@ scene("game", ({ level, score }) => {
       player.jump(CURRENT_JUMP_FORCE)
     }
   })
+
+// boule de feu
+
+function spawnFireBall(p){
+  add([
+    rect(10,10),
+    pos(p),
+    origin('center'),
+    color(1,0,0),
+    'bullet'
+  ])
+}
+
+keyPress('z', () => {
+  spawnFireBall(player.pos.add(15, -10))
 })
 
-scene('lose', ({ score }) => {
-  add([text(score, 32), origin('center'), pos(width()/2, height()/ 2)])
+const FIRE_SPEED = 400
+action('bullet', (b) => {
+  b.move(FIRE_SPEED, 0)
+  if (b.pos.x < 0){
+    destroy(b)
+  }
+
+collides('bullet', 'dangerous', (b,d)=> {
+  destroy(b)
+  destroy(d)
+})
+
+})
+
+})
+
+scene('lose', () => {
+  add([text("You failed"), origin('center'), pos(width()/2, height()/ 2)])
 })
 
 start("game", { level: 0, score: 0})
