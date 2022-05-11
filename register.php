@@ -1,6 +1,5 @@
 <?php 
-include('link-bdd.php');
-include('headers.php');
+include('init.php');
 
 if(isset($_SESSION['membre'])) {
     header('location:home.php');
@@ -25,7 +24,7 @@ if($_POST){
         $_POST['mdp'] = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
 
         if(empty($erreur)) {
-            $pdo->exec("INSERT INTO membre (nom, prenom, pseudo, email, mdp) VALUES ('$_POST[pseudo]','$_POST[mdp]') ");
+            $pdo->exec("INSERT INTO membre (pseudo, mdp) VALUES ('$_POST[pseudo]','$_POST[mdp]') ");
             $content .= '<p> Inscription validée !</p>';
         }
         
@@ -39,6 +38,14 @@ if($content == '<p> Inscription validée !</p>') {
 
 ?>
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+</head>
 
 <body>
     
@@ -47,21 +54,15 @@ if($content == '<p> Inscription validée !</p>') {
     <?php echo $content;?>
     
     <form class="main-form" method="post">
-        <div>
-            <input class="main-input" type="text" name="nom" id="nom" placeholder="Nom" required>
-            <input class="main-input" type="text" name="prenom" id="prenom" placeholder="Prénom" required>
-        </div>
-            <input class="main-input" type="email" name="email" id="email" placeholder="email" required>
             <input class="main-input" type="text" name="pseudo" id="pseudo" placeholder="Pseudo" required>
             <input class="main-input" type="password" name="mdp" id="mdp" placeholder="Mot de passe" required>
-        <div class="checkbox-container" >
-            <input class="form-checkbox" type="checkbox" name="condition" id="condition" value="condition" required>
-            <label for="condition">J'accepte les <a class="general-condition" href="#">conditions générales d'utilisation</a> </label>
-        </div>
-        <input class="main-btn" type="submit" value="S'inscrire">
-        <a class="connexion-link" href="connexion.php">J'ai déjà un compte</a>
+            <input class="main-btn" type="submit" value="S'inscrire">
+
+            <a class="connexion-link" href="connexion.php">J'ai déjà un compte</a>
     </form>
 
 </main>
 
+</body>
 </html>
+

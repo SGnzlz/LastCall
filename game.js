@@ -2,8 +2,8 @@
 
 kaboom({
   global: true,
-  fullscreen: true,
-  scale: 2,
+  fullscreen: false,
+  scale: 1,
   debug: true,
   clearColor: [0, 0, 0, 1],
 })
@@ -11,7 +11,7 @@ kaboom({
 // Speed identifiers
 const MOVE_SPEED = 120 
 const JUMP_FORCE = 360
-const BIG_JUMP_FORCE = 550
+const PLANE_JUMP_FORCE = 777
 let CURRENT_JUMP_FORCE = JUMP_FORCE
 const FALL_DEATH = 400
 const ENEMY_SPEED = 20
@@ -44,7 +44,7 @@ loadSprite('blue-surprise', 'RMqCc1G.png')
 
 // creation de map
 
-scene("game", ({ level, score }) => {
+scene("game", ({ level }) => {
   layers(['bg', 'obj', 'ui'], 'obj')
 
   const maps = [
@@ -100,7 +100,9 @@ scene("game", ({ level, score }) => {
 
   const gameLevel = addLevel(maps[level], levelCfg)
 
-  let TIME_LEFT = 200
+  // valeur de base du timer global du niveau
+
+  let TIME_LEFT = 100
 
   let timer = add([
     text(0),
@@ -111,6 +113,8 @@ scene("game", ({ level, score }) => {
     }
   ])
 
+  // diminution du temps du timer
+
   timer.action(()=> {
     timer.time -= dt()
     timer.text = timer.time.toFixed(0)
@@ -118,6 +122,8 @@ scene("game", ({ level, score }) => {
       go('lose')
     }
   })
+
+  //affichage de texte 
 
   add([text('Battery time left :' ), pos(0, 6)])
   
@@ -128,7 +134,7 @@ scene("game", ({ level, score }) => {
     solid(),
     pos(30, 0),
     body(),
-    big(),
+    Plane(),
     origin('bot')
   ])
   
@@ -151,32 +157,32 @@ scene("game", ({ level, score }) => {
     }
   })
   
-  // fonction de gestion du bonus du schroom (taille, durée, hauteur de saut)
+  // fonction de gestion du bonus du mode avion (durée, hauteur de saut)
 
-  function big() {
+  function Plane() {
     let timer = 0
-    let isBig = false
+    let isPlane = false
     return {
       update() {
-        if (isBig) {
-          CURRENT_JUMP_FORCE = BIG_JUMP_FORCE + time.time * 3
+        if (isPlane) {
+          CURRENT_JUMP_FORCE = PLANE_JUMP_FORCE + time.time * 3
           timer -= dt()
           if (timer <= 0) {
             this.normalmode()
           }
         }
       },
-      isBig() {
-        return isBig
+      isPlane() {
+        return isPlane
       },
       normalmode() {
         CURRENT_JUMP_FORCE = JUMP_FORCE
         timer = 0
-        isBig = false
+        isPlane = false
       },
       planemode(time) {
         timer = time
-        isBig = true     
+        isPlane = true     
       }
     }
   }
