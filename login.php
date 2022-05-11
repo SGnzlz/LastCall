@@ -46,9 +46,8 @@ if($_POST) {
     <input class="main-input" type="pseudo"name="pseudo" id="pseudo" placeholder="pseudo" required>
     <input class="main-input" type="password" name="mdp" id="mdp" placeholder="Mot de passe" required>
     <input class="main-btn" type="submit" value="Se connecter">
-    <div class="connexion-alt">
-        <a href="#">mot de passe oublié ?</a>|<a href="inscription.php">créer un compte</a>
-    </div>
+    
+    <a href="inscription.php">créer un compte</a>
 </form>
 
 </main>

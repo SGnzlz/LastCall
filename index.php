@@ -2,13 +2,6 @@
   <head>
     <meta charset="utf-8" />
     <title>RingRingRun</title>
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-        background-color: aqua;
-      }
-    </style>
   </head>
   <body>
 
@@ -31,7 +24,5 @@ if(isset($_SESSION['membre'])) {
 ?>
 
 
-    <script src="https://kaboomjs.com/lib/0.5.0/kaboom.js"></script>
-    <script src="game.js"></script>
   </body>
 </html>
