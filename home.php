@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Last call</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style-login-home.css">
+    <title>LAST CALL</title>
 </head>
-<body>
-    <div class="title-container">
-        <img class="img-title" src="" alt="">
-        <h1 class="txt-title" >Last call</h1>
-    </div>
-
-    <div class="home-menu">
-        <input type="text" class="main-btn">
-        <input type="text" class="main-btn">
-        <input type="text" class="main-btn">
-    </div>
-
+<body class="home-connecter">
+    <header class="header">
+        <img src="image/bob2.png" alt="Bob" class="logo">
+        <h1 class="title-header-home">LAST CALL</h1>
+    </header>
+    <section class="home-menu">
+        <button class="btn-menu-home"><a href="arcade.php">New Game</a></button>
+        <button class="btn-menu-home"><a href="leaderboard.php">Score</a></button>
+        <button class="btn-menu-home"><a href="settings.php">Options</a></button>
+    </section>
 </body>
 </html>
