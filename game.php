@@ -4,6 +4,7 @@
     <title>RingRingRun</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
+    s
   </head>
 
   <body class="game-page-container">
@@ -48,7 +49,7 @@
                 Batterie
             </div>
 
-            <div class="card-text">
+            <div class="card-text timer">
                 A remplacer
             </div>
 
