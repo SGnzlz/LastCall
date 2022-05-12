@@ -35,20 +35,38 @@ if($_POST) {
 }
  
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style-login-home.css">
+</head>
 
-    <main>
+<body class="body">
 
+<header class="header">
+        <img src="image/bob1.png" alt="Bob" class="logo">
+        <h1 class="title-header">LAST CALL</h1>
+    </header>
+
+    <section class="home-connexion">
+        <h2 class="title-form">Connexion</h2>
+        <form method="post" class="form">
+            <input type="text" id="pseudo" class="input" placeholder="Pseudo..." required>
+            <input type="text" id="mdp" class="input" placeholder="Mot de passe..." required>
+            <input type="submit" value="Se connecter" class="input connexion">
+        </form>
+        <button class="btn-inscription"><a href="register.php">S'inscrire</a></button>
+    </section>
+
+</body>
         <?php 
             echo $content;
         ?>
 
-<form class="main-form" method="post">
-    <input class="main-input" type="pseudo"name="pseudo" id="pseudo" placeholder="pseudo" required>
-    <input class="main-input" type="password" name="mdp" id="mdp" placeholder="Mot de passe" required>
-    <input class="main-btn" type="submit" value="Se connecter">
-
-    <a href="register.php">créer un compte</a>
-</form>
-
-</main>
 </html>
+

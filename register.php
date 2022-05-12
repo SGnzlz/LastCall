@@ -47,7 +47,7 @@ if($content == '<p> Inscription validée !</p>') {
     <title>register</title>
 </head>
 
-<body>
+<body class="body" >
     
 <main>
 
