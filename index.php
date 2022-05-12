@@ -16,8 +16,8 @@ if(isset($_SESSION['membre'])) {
  }   else {
 ?>
     <div class="index-link" >
-        <a class="main-btn" href="inscription.php">Inscription</a>
-        <a class="main-btn" href="connexion.php">Connexion</a>
+        <a class="main-btn" href="register.php">Inscription</a>
+        <a class="main-btn" href="login.php">Connexion</a>
     </div>
 <?php
          }

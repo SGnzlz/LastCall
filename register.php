@@ -24,7 +24,7 @@ if($_POST){
         $_POST['mdp'] = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
 
         if(empty($erreur)) {
-            $pdo->exec("INSERT INTO membre (pseudo, mdp) VALUES ('$_POST[pseudo]','$_POST[mdp]') ");
+            $pdo->exec("INSERT INTO membre (idMembre, pseudo, mdp, ranked, droite, gauche, sauter, action, worldFinish	) VALUES ('','$_POST[pseudo]','$_POST[mdp]'), 'none', '', '', '', '','0' ");
             $content .= '<p> Inscription validée !</p>';
         }
         
@@ -33,7 +33,7 @@ if($_POST){
 }
 
 if($content == '<p> Inscription validée !</p>') {
-    header('location:connexion.php');
+    header('location:login.php');
 }
 
 ?>
@@ -58,7 +58,7 @@ if($content == '<p> Inscription validée !</p>') {
             <input class="main-input" type="password" name="mdp" id="mdp" placeholder="Mot de passe" required>
             <input class="main-btn" type="submit" value="S'inscrire">
 
-            <a class="connexion-link" href="connexion.php">J'ai déjà un compte</a>
+            <a class="connexion-link" href="login.php">J'ai déjà un compte</a>
     </form>
 
 </main>

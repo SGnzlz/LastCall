@@ -104,6 +104,8 @@ scene("game", ({ level }) => {
 
   let TIME_LEFT = 100
 
+  let timerOut = document.querySelector(".timer");
+ 
   let timer = add([
     text(0),
     pos(160, 6),
@@ -112,12 +114,17 @@ scene("game", ({ level }) => {
       time: TIME_LEFT,
     }
   ])
+ 
+  
 
   // diminution du temps du timer
 
   timer.action(()=> {
     timer.time -= dt()
     timer.text = timer.time.toFixed(0)
+    
+    timerOut.innerHTML =timer.time.toFixed(0)
+
     if(timer.time <= 0 || timer.time > 200) {
       go('lose')
     }

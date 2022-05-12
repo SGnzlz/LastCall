@@ -1,6 +1,8 @@
-<?php include('init.php');?>
-
 <?php 
+
+include('init.php');
+
+
 if(isset($_SESSION['membre'])) {
     header('location:home.php');
 }
@@ -34,8 +36,6 @@ if($_POST) {
  
 ?>
 
-<?php include('headers.php');?>
-
     <main>
 
         <?php 
@@ -46,8 +46,8 @@ if($_POST) {
     <input class="main-input" type="pseudo"name="pseudo" id="pseudo" placeholder="pseudo" required>
     <input class="main-input" type="password" name="mdp" id="mdp" placeholder="Mot de passe" required>
     <input class="main-btn" type="submit" value="Se connecter">
-    
-    <a href="inscription.php">créer un compte</a>
+
+    <a href="register.php">créer un compte</a>
 </form>
 
 </main>
