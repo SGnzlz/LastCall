@@ -1,9 +1,4 @@
-a {
-	text-decoration: none;
-	color: #fff;
-}
-
-.body {
+body {
     background-color: #EE7933;
 }
 
@@ -16,6 +11,8 @@ a {
 .logo {
     width: 250px;
     height: auto;
+	transform: translateX(50px);
+	z-index: -1;
 }
 
 .title-header {
@@ -23,7 +20,7 @@ a {
     color: white;
 }
 
-.home-menu, .home-connexion {
+.home-connexion {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,19 +32,24 @@ a {
     color: white;
 }
 
+.title-score {
+	font-size: 50px;
+	color: #66BDD9;
+}
+
 .form {
     display: flex;
     flex-direction: column;
 }
 
-.input, .btn-inscription {
+.input {
     width: 100%;
 	margin: 10px;
 	align-self: center;
 	font-size: 16px;
 	letter-spacing: 2px;
 	text-decoration: none;
-	color: rgb(236, 236, 236);
+	color: rgb(0, 0, 0);
 	cursor: pointer;
 	border: 3px solid;
 	padding: 20px 40px;
@@ -56,9 +58,10 @@ a {
 	user-select: none;
 	-webkit-user-select: none;
   	touch-action: manipulation;
+	outline: none;
 }
 
-.btn-menu-home,.btn-inscription,.connexion {
+.btn-inscription, .connexion {
     width: 214px;
 	margin: 10px;
 	align-self: center;
@@ -77,11 +80,49 @@ a {
     background-color: #66BDD9;
 }
 
-.home-menu {
+.btn-inscription:active, .connexion:active, .input:active {
+	box-shadow: 0px 0px 0px 0px;
+  	top: 5px;
+  	left: 5px;
+}
+
+.home-connecter {
     background-color: white;
 }
 
-.title-header-home {
+.title-header-connecter {
     font-size: 100px;
     color: #EE7933;
+}
+
+.list-monde{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	gap: 60px;
+	margin-top: 20px;
+}
+
+.list-monde:first-child {
+	margin-left: 30px;
+}
+
+.list-monde:last-child {
+	margin-bottom: 30px;
+}
+
+.nb-monde {
+	color: #66BDD9;
+	font-size: 50px;
+}
+
+.title-monde {
+	color: #66BDD9;
+	font-size: 40px;
+}
+
+.description-monde {
+	color: #EE7933;
+	font-size: 25px;
+	width: 320px;
 }

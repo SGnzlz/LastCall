@@ -21,6 +21,15 @@ if($_POST) {
                     
                     $_SESSION['membre']['pseudo']= $membre['pseudo'];
                     $_SESSION['membre']['id_membre']= $membre['id_membre'];
+                    $_SESSION['membre']['ranked']= $membre['ranked'];
+                    $_SESSION['membre']['droite']= $membre['droite'];
+                    $_SESSION['membre']['gauche']= $membre['gauche'];
+                    $_SESSION['membre']['sauter']= $membre['sauter'];
+                    $_SESSION['membre']['action']= $membre['action'];
+                    $_SESSION['membre']['worldFinish']= $membre['worldFinish'];
+
+
+
                     
                     header('location:home.php');
                     
@@ -35,6 +44,7 @@ if($_POST) {
 }
  
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -54,19 +64,21 @@ if($_POST) {
     </header>
 
     <section class="home-connexion">
-        <h2 class="title-form">Connexion</h2>
+        <h2 class="title-form">Connexion        
+            <?php 
+                echo $membre['pseudo'];
+                echo $content;
+            ?>
+        </h2>
         <form method="post" class="form">
-            <input type="text" id="pseudo" class="input" placeholder="Pseudo..." required>
-            <input type="text" id="mdp" class="input" placeholder="Mot de passe..." required>
+            <input type="text" name="pseudo" id="pseudo" class="input" placeholder="Pseudo..." required>
+            <input type="text" name="mdp" id="mdp" class="input" placeholder="Mot de passe..." required>
             <input type="submit" value="Se connecter" class="input connexion">
         </form>
         <button class="btn-inscription"><a href="register.php">S'inscrire</a></button>
     </section>
 
 </body>
-        <?php 
-            echo $content;
-        ?>
 
 </html>
 

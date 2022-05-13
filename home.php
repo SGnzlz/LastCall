@@ -1,3 +1,9 @@
+<?php 
+include('init.php');
+include('disconnect.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,6 +15,9 @@
     <title>LAST CALL</title>
 </head>
 <body class="home-connecter">
+    <?php
+        echo $_SESSION['membre']['pseudo'];                 
+    ?>
     <header class="header">
         <img src="image/bob2.png" alt="Bob" class="logo">
         <h1 class="title-header-home">LAST CALL</h1>
