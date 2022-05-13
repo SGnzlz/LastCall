@@ -5,7 +5,7 @@
 }
 
 
-/* ----- game.php ----- */
+/* ----- game.php backup----- */
 
 .game-page-container{
     margin: 0;
@@ -17,7 +17,7 @@
     padding-top: 150px;
 }
 
-/* ----- game.php : logo dark ----- */
+/* ----- game.php : logo dark backup----- */
 
 .logo-dark {
     position: absolute;
@@ -38,7 +38,7 @@
     font-size: 100px;
 }
 
-/* ----- game.php : section interface ----- */
+/* ----- game.php : section interface backup----- */
 
 .section-interface {
     display: flex;
@@ -72,7 +72,7 @@
     background: var(--main-light-color);
 }
 
-/* ----- game.php : section menu ----- */
+/* ----- game.php : section menu backup----- */
 
 .section-menu{
     width: 20vw;
@@ -94,3 +94,73 @@
     color: var(--main-light-color);
 }
 
+/* ----- game.php : V1 ----- */
+
+.resume{
+    display:none;
+  }
+  .printResume{
+    display:block;
+    position : absolute;
+    bottom : calc(50vh - 100px);
+    left : calc(50vh - 100px);
+    width : 200px;
+    height : 200px;
+    z-index: 400;
+  }
+
+
+/* ----- arcade.php : section lvl-choice ----- */
+
+.lvl-choice {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.lvl-card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lvl-card-title {
+    color: var(--secondary-bg-color);
+    font-size: 40px;
+}
+
+.lvl-card-img {
+    border-radius: 12px;
+}
+
+.lvl-card-txt {
+    color: var(--main-bg-color);
+    font-size: 20px;
+}
+
+/* ----- leaderboard.php : section leaderboard ----- */
+
+.section-leaderboard {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.score-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.rank-title {
+    color: var(--main-bg-color);
+    font-size: 40px;
+}
+
+.rank-1, .rank-2, .rank-3 {
+    font-size: 30px;
+}
