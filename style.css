@@ -5,7 +5,7 @@
 }
 
 
-/* ----- game.php backup----- */
+/* ----- game.php ----- */
 
 .game-page-container{
     margin: 0;
@@ -17,7 +17,7 @@
     padding-top: 150px;
 }
 
-/* ----- game.php : logo dark backup----- */
+/* ----- game.php : logo dark ----- */
 
 .logo-dark {
     position: absolute;
@@ -38,7 +38,7 @@
     font-size: 100px;
 }
 
-/* ----- game.php : section interface backup----- */
+/* ----- game.php : section interface ----- */
 
 .section-interface {
     display: flex;
@@ -72,7 +72,7 @@
     background: var(--main-light-color);
 }
 
-/* ----- game.php : section menu backup----- */
+/* ----- game.php : section menu ----- */
 
 .section-menu{
     width: 20vw;
@@ -108,6 +108,8 @@
     height : 200px;
     z-index: 400;
   }
+
+/*  ------  game.php : V1  ------ */
 
 
 /* ----- arcade.php : section lvl-choice ----- */
