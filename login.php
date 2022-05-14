@@ -13,33 +13,30 @@ if($_POST) {
     $r = $pdo->query("SELECT * FROM membre WHERE pseudo = '$_POST[pseudo]'");
     
     if($r->rowCount() >=1) {
-            $membre = $r->fetch(PDO::FETCH_ASSOC);
+        $membre = $r->fetch(PDO::FETCH_ASSOC);
+            
+            if(password_verify($_POST['mdp'], $membre['mdp'])){
+
+                $content .='<p> MDP : OK</p>';
                 
-                if(password_verify($_POST['mdp'], $membre['mdp'])){
+                $_SESSION['membre']['pseudo']= $membre['pseudo'];
+                $_SESSION['membre']['id_membre']= $membre['id_membre'];
+                $_SESSION['membre']['ranked']= $membre['ranked'];
+                $_SESSION['membre']['droite']= $membre['droite'];
+                $_SESSION['membre']['gauche']= $membre['gauche'];
+                $_SESSION['membre']['sauter']= $membre['sauter'];
+                $_SESSION['membre']['action']= $membre['action'];
+                $_SESSION['membre']['worldFinish']= $membre['worldFinish'];
 
-                    $content .='<p> MDP : OK</p>';
-                    
-                    $_SESSION['membre']['pseudo']= $membre['pseudo'];
-                    $_SESSION['membre']['id_membre']= $membre['id_membre'];
-                    $_SESSION['membre']['ranked']= $membre['ranked'];
-                    $_SESSION['membre']['droite']= $membre['droite'];
-                    $_SESSION['membre']['gauche']= $membre['gauche'];
-                    $_SESSION['membre']['sauter']= $membre['sauter'];
-                    $_SESSION['membre']['action']= $membre['action'];
-                    $_SESSION['membre']['worldFinish']= $membre['worldFinish'];
+                header('location:home.php');
+                
+            }else {
+                $content .= '<p>Mot de passe incorrect.</p>';
+            }
 
-
-
-                    
-                    header('location:home.php');
-                    
-                }else {
-                    $content .= '<p>Mot de passe incorrect.</p>';
-                }
-
-            } else {
-                $content.='<p>Compte inexistant</p>';
-        }
+    } else {
+        $content.='<p>Compte inexistant</p>';
+    }
         
 }
  
@@ -72,7 +69,7 @@ if($_POST) {
         </h2>
         <form method="post" class="form">
             <input type="text" name="pseudo" id="pseudo" class="input" placeholder="Pseudo..." required>
-            <input type="text" name="mdp" id="mdp" class="input" placeholder="Mot de passe..." required>
+            <input type="password" name="mdp" id="mdp" class="input" placeholder="Mot de passe..." required>
             <input type="submit" value="Se connecter" class="input connexion">
         </form>
         <button class="btn-inscription"><a href="register.php">S'inscrire</a></button>

@@ -2,6 +2,9 @@
 include('init.php');
 include('disconnect.php');
 
+// $PRG = $pdo -> query("SELECT worldFinish FROM user WHERE pseudo = 'session' ");
+// $progress = $PRG->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
