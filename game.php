@@ -484,7 +484,7 @@ scene('lose', () => {
       window.location.reload();
     })
     keyPress('escape', () => {
-      window.location.replace("http://localhost/ringringrun/arcade.php"); //http://localhost:8888/ringringrun/arcade.php
+      window.location.replace("http://localhost/LastCall/arcade.php"); //http://localhost:8888/ringringrun/arcade.php
     })
 })
 
@@ -498,10 +498,10 @@ scene('win', () => {
       window.location.reload();
     })
     keyPress('escape', () => {
-      window.location.replace("http://localhost/ringringrun/arcade.php");//http://localhost:8888/ringringrun/arcade.php
+      window.location.replace("http://localhost/LastCall/arcade.php");//http://localhost:8888/ringringrun/arcade.php
     })
     keyPress('enter', () => {
-      window.location.replace("http://localhost/ringringrun/game.php?nbMonde=<?php echo $monde += 1; ?>");
+      window.location.replace("http://localhost/LastCall/game.php?nbMonde=<?php echo $monde += 1; ?>");
     })
     
 })
