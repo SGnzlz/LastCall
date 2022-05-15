@@ -28,9 +28,6 @@ if($_POST) {
                     $_SESSION['membre']['action']= $membre['action'];
                     $_SESSION['membre']['worldFinish']= $membre['worldFinish'];
 
-
-
-                    
                     header('location:home.php');
                     
                 }else {
@@ -66,7 +63,7 @@ if($_POST) {
     <section class="home-connexion">
         <h2 class="title-form">Connexion        
             <?php 
-                echo $membre['pseudo'];
+                // echo $membre['pseudo'];
                 echo $content;
             ?>
         </h2>

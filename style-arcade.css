@@ -126,3 +126,19 @@ body {
 	font-size: 25px;
 	width: 320px;
 }
+.backHome{
+	position: fixed;
+	width: 60px;
+	height:40px;
+	color: aliceblue;
+	background-color: #66BDD9;
+	font-size: 20px;
+	top: 20px;
+	left: 10px;
+	border: 2px solid;
+	border-radius: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+}

@@ -1,8 +1,8 @@
 <script type="text/javascript">
-  var lvlOne = [];
-  var lvlTwo = [];
-  var lvlThree = [];
+  var lvlOne = [];// Level design array
+ 
 </script>
+
 <?php
 
 include('init.php');
@@ -18,6 +18,7 @@ if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') $url = "https://"; el
 $urlContent= parse_url($url);
 parse_str($urlContent['query'], $params);
 $monde = $params['nbMonde'];
+
 
 //on recupere les touches personalisé
 
@@ -42,20 +43,19 @@ $PRG = $pdo -> query("SELECT worldFinish FROM membre WHERE pseudo = 'toto' ");
 $progress = $PRG->fetch(PDO::FETCH_ASSOC);
   ?>
 <script type=text/javascript>
-      // var progress = 
+      console.log("<?php echo $progress['worldFinish']?>"); 
+      var worldStage = <?php echo $monde?>
 </script>
 
 
 
 <script type="text/javascript">
-
-
-
     console.log(" touche droite : <?php echo $rightControlPlayer['droite']; ?>");
     console.log(" touche geuche : <?php echo $leftControlPlayer['gauche']; ?>");
     console.log(" touche sauter : <?php echo $jumpControlPlayer['sauter']; ?>");
     console.log(" touche action : <?php echo $actionControlPlayer['action']; ?>");
 </script>
+
 
 <?php
 
@@ -72,23 +72,7 @@ switch ($monde) {
         </script>
         <?php
       }
-      $b = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 2 ");
-      while ($all_post = $b->fetch(PDO::FETCH_ASSOC)){
-        ?>
-        <script type="text/javascript">
-          lvlTwo.push("<?php echo $all_post['content'];?>");
-        </script>
-        
-        <?php
-      }
-      $c = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 3 ");
-      while ($all_post = $c->fetch(PDO::FETCH_ASSOC)){
-          ?>
-          <script type="text/javascript">
-            lvlThree.push("<?php echo $all_post['content'];?>");
-          </script>
-          <?php
-      }
+      
     break;
 
       //appelle du monde 2
@@ -101,23 +85,7 @@ switch ($monde) {
         </script>
         <?php
       }
-      $b = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 2 ");
-      while ($all_post = $b->fetch(PDO::FETCH_ASSOC)){
-        ?>
-        <script type="text/javascript">
-          lvlTwo.push("<?php echo $all_post['content'];?>");
-        </script>
-        
-        <?php
-      }
-      $c = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 3 ");
-      while ($all_post = $c->fetch(PDO::FETCH_ASSOC)){
-          ?>
-          <script type="text/javascript">
-            lvlThree.push("<?php echo $all_post['content'];?>");
-          </script>
-          <?php
-      }
+     
     break;
 
     //appelle du monde 3
@@ -130,23 +98,7 @@ switch ($monde) {
         </script>
         <?php
       }
-      $b = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 2 ");
-      while ($all_post = $b->fetch(PDO::FETCH_ASSOC)){
-        ?>
-        <script type="text/javascript">
-          lvlTwo.push("<?php echo $all_post['content'];?>");
-        </script>
-        
-        <?php
-      }
-      $c = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 3 ");
-      while ($all_post = $c->fetch(PDO::FETCH_ASSOC)){
-          ?>
-          <script type="text/javascript">
-            lvlThree.push("<?php echo $all_post['content'];?>");
-          </script>
-          <?php
-      }
+      
     break;
 
       //appelle du monde 4
@@ -159,23 +111,7 @@ switch ($monde) {
         </script>
         <?php
       }
-      $b = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 2 ");
-      while ($all_post = $b->fetch(PDO::FETCH_ASSOC)){
-        ?>
-        <script type="text/javascript">
-          lvlTwo.push("<?php echo $all_post['content'];?>");
-        </script>
-        
-        <?php
-      }
-      $c = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 3 ");
-      while ($all_post = $c->fetch(PDO::FETCH_ASSOC)){
-          ?>
-          <script type="text/javascript">
-            lvlThree.push("<?php echo $all_post['content'];?>");
-          </script>
-          <?php
-      }
+      
     break;
 
       //appelle du monde 5
@@ -188,23 +124,7 @@ switch ($monde) {
         </script>
         <?php
       }
-      $b = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 2 ");
-      while ($all_post = $b->fetch(PDO::FETCH_ASSOC)){
-        ?>
-        <script type="text/javascript">
-          lvlTwo.push("<?php echo $all_post['content'];?>");
-        </script>
-        
-        <?php
-      }
-      $c = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 3 ");
-      while ($all_post = $c->fetch(PDO::FETCH_ASSOC)){
-          ?>
-          <script type="text/javascript">
-            lvlThree.push("<?php echo $all_post['content'];?>");
-          </script>
-          <?php
-      }
+      
     break;
 
     //appelle du monde 6
@@ -217,23 +137,7 @@ switch ($monde) {
         </script>
         <?php
       }
-      $b = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 2 ");
-      while ($all_post = $b->fetch(PDO::FETCH_ASSOC)){
-        ?>
-        <script type="text/javascript">
-          lvlTwo.push("<?php echo $all_post['content'];?>");
-        </script>
-        
-        <?php
-      }
-      $c = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 3 ");
-      while ($all_post = $c->fetch(PDO::FETCH_ASSOC)){
-          ?>
-          <script type="text/javascript">
-            lvlThree.push("<?php echo $all_post['content'];?>");
-          </script>
-          <?php
-      }
+      
     break;
 
     //appelle du monde 7
@@ -246,36 +150,23 @@ switch ($monde) {
         </script>
         <?php
       }
-      $b = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 2 ");
-      while ($all_post = $b->fetch(PDO::FETCH_ASSOC)){
-        ?>
-        <script type="text/javascript">
-          lvlTwo.push("<?php echo $all_post['content'];?>");
-        </script>
-        
-        <?php
-      }
-      $c = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 3 ");
-      while ($all_post = $c->fetch(PDO::FETCH_ASSOC)){
-          ?>
-          <script type="text/javascript">
-            lvlThree.push("<?php echo $all_post['content'];?>");
-          </script>
-          <?php
-      }
+      
+    break;
+    case '8':
+  
+      
     break;
   
   default:
     # code...
     break;
 }
-
   ?>
   
    <script type="text/javascript">
         
      var maps =[
-      lvlOne,lvlTwo,lvlThree
+      lvlOne // only one Level for a world to the moment
      ] 
    </script>
     
@@ -307,12 +198,12 @@ const MOVE_SPEED = 120
 const JUMP_FORCE = 360
 const PLANE_JUMP_FORCE = 777
 let CURRENT_JUMP_FORCE = JUMP_FORCE
-const FALL_DEATH = 400
+const FALL_DEATH = 2000
 const ENEMY_SPEED = 20
 
 var actualMonde = <?php echo $monde;?>
 
-var completeLevel = 3
+var completeLevel = 1
 // Game logic
 
 let isJumping = true
@@ -320,24 +211,24 @@ let isJumping = true
 // mise en place sprite
 
 loadRoot('https://i.imgur.com/')
-loadSprite('coin', 'wbKxhcd.png')
-loadSprite('evil-shroom', 'ygg4qLjh.jpg')//KPO3fR9.png
+loadSprite('coin', 'fpyqJfI.png')
+loadSprite('evil-shroom', 'hMoZtMd.png')//KPO3fR9.png
 loadSprite('brick', 'pogC9x5.png')
 loadSprite('block', 'M6rwarW.png')
-loadSprite('mario', 'Wb1qfhK.png')
-loadSprite('mushroom', '0wMd92p.png')
+loadSprite('mario', 'CJG3vJe.png')
+loadSprite('mushroom', 'RaKCKGO.png')
 loadSprite('surprise', 'gesQ1KP.png')
 loadSprite('unboxed', 'bdrLpi6.png')
-loadSprite('pipe-top-left', 'ReTPiWY.png')
-loadSprite('pipe-top-right', 'hj2GK4n.png')
-loadSprite('pipe-bottom-left', 'c1cYSbt.png')
+loadSprite('pipe-top-left', 'KMJL7H3h.jpg')//le1
+loadSprite('pipe-top-right', '3pRDpKBh.jpg')//le2
+loadSprite('pipe-bottom-left', '2NjUVdz.png')
 loadSprite('pipe-bottom-right', 'nqQ79eI.png')
 
-loadSprite('blue-block', 'fVscIbn.png')
-loadSprite('blue-brick', '3e5YRQd.png')
-loadSprite('blue-steel', 'gqVoI2b.png')
-loadSprite('blue-evil-shroom', 'SvV4ueD.png')
-loadSprite('blue-surprise', 'RMqCc1G.png')
+loadSprite('blue-block', 'flD7rb2.png')//le3
+loadSprite('blue-brick', 'YNJIFvph.jpg')//le4
+loadSprite('blue-steel', 'Kbtg6vwh.jpg')//le5
+loadSprite('blue-evil-shroom', 'sW7d9Y0h.jpg')//le6
+loadSprite('blue-surprise', 'U3MlqZPh.jpg')//le7
 
 // creation de map
 
@@ -369,15 +260,15 @@ scene("game", ({ level }) => {
     '}': [sprite('unboxed'), solid()],
     '(': [sprite('pipe-bottom-left'), solid(), scale(0.5), 'pipe'],
     // ')': [sprite('pipe-bottom-right'), solid(), scale(0.5)],
-    // '-': [sprite('pipe-top-left'), solid(), scale(0.5), 'pipe'],
-    // '+': [sprite('pipe-top-right'), solid(), scale(0.5), 'pipe'],
+   '-': [sprite('pipe-top-left'), scale(2)],//le1
+   '+': [sprite('pipe-top-right'), scale(2)],//le2
     '^': [sprite('evil-shroom'), solid(),scale(0.5), 'dangerous'],
     '#': [sprite('mushroom'), solid(), 'mushroom', body()],
-    '!': [sprite('blue-block'), solid(), scale(2)],
-    '£': [sprite('blue-brick'), solid(), scale(0.5)],
-    'z': [sprite('blue-evil-shroom'), solid(), scale(0.5), 'slowshroom'],
-    '@': [sprite('blue-surprise'), solid(), scale(0.5), 'coin-surprise'],
-    'x': [sprite('blue-steel'), solid(), scale(0.5)],
+    '!': [sprite('blue-block'), scale(2)],//le3
+    '£': [sprite('blue-brick'), scale(2)],//le4
+    'z': [sprite('blue-evil-shroom'), scale(2)],//le6
+    '@': [sprite('blue-surprise'), scale(2)],//le7
+    'x': [sprite('blue-steel'), scale(2)],//le5
 
   }
 
@@ -386,7 +277,7 @@ scene("game", ({ level }) => {
   // valeur de base du timer global du niveau
 
   let TIME_LEFT = 100
-
+  
   let timer = add([
     text(0),
     pos(160, 6),
@@ -505,12 +396,20 @@ scene("game", ({ level }) => {
   player.action(() => {
     camPos(player.pos)
     if (player.pos.y >= FALL_DEATH) {
+      if (worldStage==8) {
+      go('champion')
+    }else{
       go('lose')
+    }
     }
   })
 
   player.collides('pipe', () => {
     completeLevel -= 1
+    if (worldStage>=8) {
+      go('champion')
+    }
+
     if(completeLevel == 0){
       go('win')
     }
@@ -519,6 +418,7 @@ scene("game", ({ level }) => {
         level: (level + 1)  % maps.length,
       })
     }
+   
   })
 
   // gestion des déplacements du joueur
@@ -556,7 +456,7 @@ function spawnFireBall(p){
   ])
 }
 
-keyPress('z', () => {
+keyPress('/', () => {
   spawnFireBall(player.pos.add(15, -10))
 })
 
@@ -601,18 +501,18 @@ scene('win', () => {
       window.location.replace("http://localhost/ringringrun/arcade.php");//http://localhost:8888/ringringrun/arcade.php
     })
     keyPress('enter', () => {
-      window.location.replace("http://localhost/ringringrun/game.php?nbMonde <?php echo $monde += 1; ?>");
+      window.location.replace("http://localhost/ringringrun/game.php?nbMonde=<?php echo $monde += 1; ?>");
     })
     
 })
 
 scene('champion', () => {
-  add([text("thank you"), origin('center'), pos(width()/2, height()/ 2)])
+  add([text("thank you to achieve this project game"), origin('center'), pos(width()/2, height()/ 2)])
+  add([text("team 5 : Sofia Gonsalez;) Inshya Lakoubay;) Christine Cai;) Antony Lebaz;) Herve Risse;) Thomas Dias;)"), origin('center'), pos(width()/2, height()/ 1.8)])
 })
 start("game", { level: 0, score: 0})
-
     </script>
-    
+  
 <div id = "menuInGame" class = "resume">
   <h3>resume</h3>
   <p>press P to play</p>

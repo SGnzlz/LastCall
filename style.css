@@ -4,7 +4,9 @@
     --main-light-color:#FFFAEC;
 }
 
-
+html{
+    overflow: hidden;
+}
 /* ----- game.php backup----- */
 
 .game-page-container{
@@ -111,7 +113,11 @@
 
 
 /* ----- arcade.php : section lvl-choice ----- */
-
+h1{
+    font-size: 100px;
+    color: #EE7933;
+    margin-left: 50px;
+}
 .lvl-choice {
     display: flex;
     justify-content: space-evenly;
@@ -163,4 +169,8 @@
 
 .rank-1, .rank-2, .rank-3 {
     font-size: 30px;
+}
+audio{
+    position: absolute;
+    top: 2000;
 }

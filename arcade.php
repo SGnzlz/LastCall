@@ -21,6 +21,7 @@ include('disconnect.php');
 <header class="header">
         <img src="image/bob2.png" alt="Bob" class="logo">
         <h1 class="title-header-home">LAST CALL</h1>
+        <a class="backHome" href="home.php">Quitter</a>
     </header>
 
     <section>
@@ -30,49 +31,49 @@ include('disconnect.php');
             <li>
                 <h3 class="nb-monde">Monde 1 :</h3>
                 <h4 class="title-monde">Le sac</h4>
-                <div><a href="game.php?nbMonde=1"><img src="image/arcade/monde1.png" alt=""></a></div>
+                <div><a href="game.php?nbMonde=1"><img src="image/arcade/monde1.png" alt="sac a main"></a></div>
                 <p class="description-monde">Echappez-vous du sac le plus vite possible</p>
             </li>
 
-            <li>
+            <li id="md2">
                 <h3 class="nb-monde">Monde 2 :</h3>
                 <h4 class="title-monde">La chambre</h4>
-                <div><a href="game.php?nbMonde=2"><img src="image/arcade/monde2.png" alt=""></a></div>
+                <div><a href="game.php?nbMonde=2"><img src="image/arcade/monde2.png" alt="chambre"></a></div>
                 <p class="description-monde">Parcourez la chambre et ses obstacles pour retrouver la prise</p>
             </li>
 
-            <li>
+            <li id="md3">
                 <h3 class="nb-monde">Monde 3 :</h3>
                 <h4 class="title-monde">La cuisine</h4>
-                <div><a href="game.php?nbMonde=3"><img src="image/arcade/monde3.png" alt=""></a></div>
+                <div><a href="game.php?nbMonde=3"><img src="image/arcade/monde3.png" alt="cuisine"></a></div>
                 <p class="description-monde">Traversez la cuisine et ses ustensils pour retrouver la prise</p>
             </li>
 
-            <li>
+            <li id="md4">
                 <h3 class="nb-monde">Monde 4 :</h3>
                 <h4 class="title-monde">Le salon</h4>
-                <div><a href="game.php?nbMonde=4"><img src="image/arcade/monde4.png" alt=""></a></div>
+                <div><a href="game.php?nbMonde=4"><img src="image/arcade/monde4.png" alt="salon"></a></div>
                 <p class="description-monde">Parcourez le salon et ses obstacles pour retrouver la prise</p>
             </li>
 
-            <li>
+            <li id="md5">
                 <h3 class="nb-monde">Monde 5</h3>
                 <h4 class="title-monde">Le jardin</h4>
-                <div><a href="game.php?nbMonde=5"><img src="image/arcade/monde5.png" alt=""></a></div>
+                <div><a href="game.php?nbMonde=5"><img src="image/arcade/monde5.png" alt="jardin"></a></div>
                 <p class="description-monde">Venez prendre un bol d'air dans le jardin mais attention aux moustiques !</p>
             </li>
 
-            <li>
+            <li id="md6">
                 <h3 class="nb-monde">Monde 6</h3>
                 <h4 class="title-monde">La salle de bain</h4>
-                <div><a href="game.php?nbMonde=6"><img src="image/arcade/monde6.png" alt=""></a></div>
+                <div><a href="game.php?nbMonde=6"><img src="image/arcade/monde6.png" alt="salle de bain"></a></div>
                 <p class="description-monde">Faite vous une nouvelle beautÃ©e dans la salle de bain mais ne tomber pas dans les toilettes !</p>
             </li>
 
-            <li>
+            <li id="md7">
                 <h3 class="nb-monde">Monde 7</h3>
                 <h4 class="title-monde">Le garage</h4>
-                <div><a href="game.php?nbMonde=7"><img src="image/arcade/monde7.png" alt=""></a></div>
+                <div><a href="game.php?nbMonde=7"><img src="image/arcade/monde7.png" alt="garage"></a></div>
                 <p class="description-monde">Le boss final est la ! A vous la prise !</p>
             </li>
 
