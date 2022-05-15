@@ -7,20 +7,20 @@
 
 include('init.php');
 
-// protocole utilisé : http ou https ?
+// used protocol : http ou https ?
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') $url = "https://"; else $url = "http://";
-  // hôte (nom de domaine voire adresse IP)
+  // host
   $url .= $_SERVER['HTTP_HOST'];
-  // emplacement de la ressource (nom de la page affichée). Utiliser $_SERVER['PHP_SELF'] si vous ne voulez pas afficher les paramètres de la requête
+  // ressource location
   $url .= $_SERVER['REQUEST_URI'];
-  // on affiche l'URL de la page courante
+  // display current page URL
   
 $urlContent= parse_url($url);
 parse_str($urlContent['query'], $params);
 $monde = $params['nbMonde'];
 
 
-//on recupere les touches personalisé
+//custom keybord key
 
 $pseudoMembre = $_SESSION['membre']['pseudo'];
 
@@ -38,7 +38,8 @@ $ACP = $pdo -> query("SELECT action FROM membre WHERE pseudo = '$pseudoMembre' "
 $actionControlPlayer = $ACP->fetch(PDO::FETCH_ASSOC);
 
 
-//on recupere la progression du joueur 
+//player progress
+
 $PRG = $pdo -> query("SELECT worldFinish FROM membre WHERE pseudo = 'toto' ");
 $progress = $PRG->fetch(PDO::FETCH_ASSOC);
   ?>
@@ -59,10 +60,12 @@ $progress = $PRG->fetch(PDO::FETCH_ASSOC);
 
 <?php
 
-//on recupere les lvl du monde selectionné
+// recovery of selected world
+
 switch ($monde) {
 
-  //appelle du monde 1
+  // recovery of the world 1
+
   case '1':
       $a = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 1 ");
       while ($all_post = $a->fetch(PDO::FETCH_ASSOC)){
@@ -75,8 +78,9 @@ switch ($monde) {
       
     break;
 
-      //appelle du monde 2
-    case '2':
+      //recovery of the world 2
+
+      case '2':
       $a = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 1 ");
       while ($all_post = $a->fetch(PDO::FETCH_ASSOC)){
         ?>
@@ -88,7 +92,8 @@ switch ($monde) {
      
     break;
 
-    //appelle du monde 3
+    //recovery of the world 3
+
     case '3':
       $a = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 1 ");
       while ($all_post = $a->fetch(PDO::FETCH_ASSOC)){
@@ -101,7 +106,8 @@ switch ($monde) {
       
     break;
 
-      //appelle du monde 4
+      //recovery of the world 4
+
     case '4':
       $a = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 1 ");
       while ($all_post = $a->fetch(PDO::FETCH_ASSOC)){
@@ -114,7 +120,8 @@ switch ($monde) {
       
     break;
 
-      //appelle du monde 5
+      //recovery of the world 5
+
     case '5':
       $a = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 1 ");
       while ($all_post = $a->fetch(PDO::FETCH_ASSOC)){
@@ -127,7 +134,8 @@ switch ($monde) {
       
     break;
 
-    //appelle du monde 6
+    //recovery of the world 6
+
     case '6':
       $a = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 1 ");
       while ($all_post = $a->fetch(PDO::FETCH_ASSOC)){
@@ -140,7 +148,8 @@ switch ($monde) {
       
     break;
 
-    //appelle du monde 7
+    //recovery of the world 7
+
     case '7':
       $a = $pdo -> query("SELECT content FROM tile WHERE idMonde = $monde AND idLevel = 1 ");
       while ($all_post = $a->fetch(PDO::FETCH_ASSOC)){
@@ -208,29 +217,40 @@ var completeLevel = 1
 
 let isJumping = true
 
-// mise en place sprite
+// call sprite
 
 loadRoot('https://i.imgur.com/')
-loadSprite('coin', 'fpyqJfI.png')
-loadSprite('evil-shroom', 'hMoZtMd.png')//KPO3fR9.png
+loadSprite('appli', 'hMoZtMd.png')//KPO3fR9.png
 loadSprite('brick', 'pogC9x5.png')
 loadSprite('block', 'M6rwarW.png')
-loadSprite('mario', 'CJG3vJe.png')
-loadSprite('mushroom', 'RaKCKGO.png')
+loadSprite('phony', 'CJG3vJe.png')
+loadSprite('modeavion', 'RaKCKGO.png')
 loadSprite('surprise', 'gesQ1KP.png')
 loadSprite('unboxed', 'bdrLpi6.png')
-loadSprite('pipe-top-left', 'KMJL7H3h.jpg')//le1
-loadSprite('pipe-top-right', '3pRDpKBh.jpg')//le2
-loadSprite('pipe-bottom-left', '2NjUVdz.png')
-loadSprite('pipe-bottom-right', 'nqQ79eI.png')
+loadSprite('prise-final', '2NjUVdz.png')
 
-loadSprite('blue-block', 'flD7rb2.png')//le3
-loadSprite('blue-brick', 'YNJIFvph.jpg')//le4
-loadSprite('blue-steel', 'Kbtg6vwh.jpg')//le5
-loadSprite('blue-evil-shroom', 'sW7d9Y0h.jpg')//le6
-loadSprite('blue-surprise', 'U3MlqZPh.jpg')//le7
+//bg world 1
+loadSprite('bg-wold-1', 'KMJL7H3h.jpg')
 
-// creation de map
+//bg world 2
+loadSprite('bg-wold-2', '3pRDpKBh.jpg')
+
+//bg world 3
+loadSprite('bg-wold-3', 'flD7rb2.png')
+
+//bg world 4
+loadSprite('bg-wold-4', 'YNJIFvph.jpg')
+
+//bg world 5
+loadSprite('bg-wold-5', 'Kbtg6vwh.jpg')
+
+//bg world 6
+loadSprite('bg-wold-6', 'sW7d9Y0h.jpg')
+
+//bg world 7
+loadSprite('bg-wold-7', 'U3MlqZPh.jpg')
+
+// create map
 
 scene("game", ({ level }) => {
   // pause display
@@ -246,35 +266,47 @@ scene("game", ({ level }) => {
   // })
   layers(['bg', 'obj', 'ui'], 'obj')
   
-  
-
-  //assignation des sprite avec des sympboles pour la creation de map
+  //assign sprite with symbol
 
   const levelCfg = {
     width: 20,
     height: 20,
     '=': [sprite('block'), solid()],
-    '$': [sprite('coin'), 'coin'],
     '%': [sprite('surprise'), solid(), 'coin-surprise'],
-    '*': [sprite('surprise'), solid(), 'mushroom-surprise'],
+    '*': [sprite('surprise'), solid(), 'modeavion-surprise'],
     '}': [sprite('unboxed'), solid()],
-    '(': [sprite('pipe-bottom-left'), solid(), scale(0.5), 'pipe'],
+    '(': [sprite('prise-final'), solid(), scale(0.5), 'pipe'],
     // ')': [sprite('pipe-bottom-right'), solid(), scale(0.5)],
-   '-': [sprite('pipe-top-left'), scale(2)],//le1
-   '+': [sprite('pipe-top-right'), scale(2)],//le2
-    '^': [sprite('evil-shroom'), solid(),scale(0.5), 'dangerous'],
-    '#': [sprite('mushroom'), solid(), 'mushroom', body()],
-    '!': [sprite('blue-block'), scale(2)],//le3
-    '£': [sprite('blue-brick'), scale(2)],//le4
-    'z': [sprite('blue-evil-shroom'), scale(2)],//le6
-    '@': [sprite('blue-surprise'), scale(2)],//le7
-    'x': [sprite('blue-steel'), scale(2)],//le5
+    '^': [sprite('appli'), solid(),scale(0.5), 'dangerous'],
+    '*': [sprite('modeavion'), solid(), 'modeavion', body()],
+
+    //bg world 1
+    '-': [sprite('bg-wold-1'), scale(3)],
+    
+    //bg world 2
+    '+': [sprite('bg-wold-2'), scale(3)],
+
+    //bg world 3
+    '!': [sprite('bg-wold-3'), scale(3)],
+
+    //bg world 4
+    '£': [sprite('bg-wold-4'), scale(3)],
+
+    //bg world 5
+    'x': [sprite('bg-wold-5'), scale(3)],
+
+    //bg world 6
+    'z': [sprite('bg-wold-6'), scale(3)],
+
+    //bg world 7
+    '@': [sprite('bg-wold-7'), scale(3)],
+    
 
   }
 
   const gameLevel = addLevel(maps[level], levelCfg)
 
-  // valeur de base du timer global du niveau
+  // battery settup
 
   let TIME_LEFT = 100
   
@@ -287,7 +319,7 @@ scene("game", ({ level }) => {
     }
   ])
 
-  // diminution du temps du timer
+  // decrease in battery
 
   timer.action(()=> {
     timer.time -= dt()
@@ -297,14 +329,14 @@ scene("game", ({ level }) => {
     }
   })
 
-  //affichage de texte 
+  //text display
 
   add([text('Battery time left :' ), pos(0, 6)])
   
-  // caractéristique player
+  // player feature
   
   const player = add([
-    sprite('mario'), 
+    sprite('phony'), 
     solid(),
     pos(30, 0),
     body(),
@@ -312,26 +344,7 @@ scene("game", ({ level }) => {
     origin('bot')
   ])
   
-  action('mushroom', (m) => {
-    m.move(20, 0)
-  })
-  
-  // gestion de la box surprise
-  
-  player.on("headbump", (obj) => {
-    if (obj.is('coin-surprise')) {
-      gameLevel.spawn('$', obj.gridPos.sub(0, 1))
-      destroy(obj)
-      gameLevel.spawn('}', obj.gridPos.sub(0,0))
-    }
-    if (obj.is('mushroom-surprise')) {
-      gameLevel.spawn('#', obj.gridPos.sub(0, 1))
-      destroy(obj)
-      gameLevel.spawn('}', obj.gridPos.sub(0,0))
-    }
-  })
-  
-  // fonction de gestion du bonus du mode avion (durée, hauteur de saut)
+  // airplane mode bonus feature (timer, jump height)  
 
   function Plane() {
     let timer = 0
@@ -361,24 +374,17 @@ scene("game", ({ level }) => {
     }
   }
 
-// gestion des collisions du joueur
+// collision management
 
-  player.collides('mushroom', (m) => {
+  player.collides('modeavion', (m) => {
     destroy(m)
-    player.planemode(6)
+    player.planemode(10)
   })
 
   player.collides('slowshroom', (s)=> {
     destroy(s)
-    timer.time -= 20 
+    timer.time -= 50 
 
-  })
-
-
-  player.collides('coin', (c) => {
-    destroy(c)
-    scoreLabel.value++
-    scoreLabel.text = scoreLabel.value
   })
 
   action('dangerous', (d) => {
@@ -421,7 +427,7 @@ scene("game", ({ level }) => {
    
   })
 
-  // gestion des déplacements du joueur
+  // motion management
 
   keyDown('<?php echo $leftControlPlayer['gauche']; ?>', () => {
     player.move(-((MOVE_SPEED+timer.time)/2), 0)
@@ -443,36 +449,6 @@ scene("game", ({ level }) => {
       player.jump(CURRENT_JUMP_FORCE)
     }
   })
-
-// boule de feu
-
-function spawnFireBall(p){
-  add([
-    rect(10,10),
-    pos(p),
-    origin('center'),
-    color(1,0,0),
-    'bullet'
-  ])
-}
-
-keyPress('/', () => {
-  spawnFireBall(player.pos.add(15, -10))
-})
-
-const FIRE_SPEED = 400
-action('bullet', (b) => {
-  b.move(FIRE_SPEED, 0)
-  if (b.pos.x < 0){
-    destroy(b)
-  }
-
-collides('bullet', 'dangerous', (b,d)=> {
-  destroy(b)
-  destroy(d)
-})
-
-})
 
 })
 
