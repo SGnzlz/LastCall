@@ -64,11 +64,11 @@ if($_GET){
        
     
     $pdo->exec("UPDATE membre SET droite='$keyRight', gauche='$keyLeft', sauter='$keyUp', action='$keyAction' WHERE pseudo = '$pseudoMembreSetting' ");
-    header('Location: http://localhost/ringRingRun/home.php');
+    header('Location: http://localhost/LastCall/home.php');
 }
 }
 else{
-    header('Location: http://localhost/ringRingRun/index.php');
+    header('Location: http://localhost/LastCall/index.php');
 }
 ?>
 
