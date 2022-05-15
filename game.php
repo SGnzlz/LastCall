@@ -213,23 +213,24 @@ loadRoot('https://i.imgur.com/')
 loadSprite('coin', 'wbKxhcd.png')
 loadSprite('evil-shroom', 'hMoZtMdh.jpg')//KPO3fR9.png 
 loadSprite('brick', 'pogC9x5.png')
-loadSprite('block', 'M6rwarW.png')
-loadSprite('phony', 'BVbvUYc.png')
-loadSprite('mushroom', '0wMd92p.png')
-loadSprite('surprise', 'gesQ1KP.png')
 loadSprite('unboxed', 'bdrLpi6.png')
-loadSprite('pipe-top-left', 'ReTPiWY.png')
-loadSprite('pipe-top-right', 'hj2GK4n.png')
-loadSprite('pipe-bottom-left', 'c1cYSbt.png')
-loadSprite('pipe-bottom-right', 'nqQ79eI.png')
+loadSprite('phony', 'BVbvUYc.png')
+loadSprite('modeavion', 'RaKCKGOh.jpg')
+loadSprite('prise-final', '2NjUVdzh.jpg')
 
 loadSprite('blue-block', 'fVscIbn.png')
 loadSprite('blue-brick', '3e5YRQd.png')
 loadSprite('blue-steel', 'gqVoI2b.png')
 loadSprite('blue-evil-shroom', 'SvV4ueD.png')
-loadSprite('blue-surprise', 'RMqCc1G.png')
 
-loadSprite('bg-img', 'sW7d9Y0h.jpg')
+
+loadSprite('bg-img-one', 'KMJL7H3h.jpg')
+loadSprite('bg-img-two', '3pRDpKBh.jpg')
+loadSprite('bg-img-three', 'flD7rb2.png')
+loadSprite('bg-img-four', 'YNJIFvph.jpg')
+loadSprite('bg-img-five', 'Kbtg6vwh.jpg')
+loadSprite('bg-img-six', 'sW7d9Y0h.jpg')
+loadSprite('bg-img-seven', 'U3MlqZPh.jpg')
 
 
 
@@ -256,25 +257,37 @@ scene("game", ({ level }) => {
   const levelCfg = {
     width: 20,
     height: 20,
-    'x': [sprite('block'), solid()],
     '$': [sprite('coin'), 'coin'],
-    '%': [sprite('surprise'), solid(), 'coin-surprise'],
-    '#': [sprite('surprise'), solid(), 'mushroom-surprise'],
     '}': [sprite('unboxed'), solid()],
-    '(': [sprite('pipe-bottom-left'), solid(), scale(0.5), 'pipe'],
-    // ')': [sprite('pipe-bottom-right'), solid(), scale(0.5)],
-    // '-': [sprite('pipe-top-left'), solid(), scale(0.5), 'pipe'],
-    // '+': [sprite('pipe-top-right'), solid(), scale(0.5), 'pipe'],
     '^': [sprite('evil-shroom'), solid(),scale(1), 'dangerous'],
-    '*': [sprite('mushroom'), solid(), 'mushroom', body()],
     '!': [sprite('blue-block'), solid(), scale(2)],
     '£': [sprite('blue-brick'), solid(), scale(0.5)],
-    'z': [sprite('blue-evil-shroom'), solid(), scale(0.5), 'slowshroom'],
-    '@': [sprite('blue-surprise'), solid(), scale(0.5), 'coin-surprise'],
+    'z': [sprite('blue-evil-shroom'), solid(), scale(0.5), 'dangerous'],
     '=': [sprite('blue-steel'), solid(), scale(0.5)],
+    
+    '*': [sprite('modeavion'), solid(), 'modeavion', body()],
+    '(': [sprite('prise-final'), solid(), scale(0.5), 'pipe'],
 
-    '€': [sprite('bg-img'), scale(2)],
+    //bg world 1
+    ')': [sprite('bg-img-one'), scale(3)],
 
+    //bg world 2
+    '-': [sprite('bg-img-two'), scale(3)],
+
+    //bg world 3
+    '+': [sprite('bg-img-three'), scale(3)],
+
+    //bg world 4
+    '@': [sprite('bg-img-four'), scale(3)],
+
+    //bg world 5
+    'x': [sprite('bg-img-five'), scale(3)],
+    
+    // bg world 6
+    '€': [sprite('bg-img-six'), scale(3)],
+    
+    //bg world 7
+    '%': [sprite('bg-img-seven'), scale(3)],
 
   }
 
@@ -298,7 +311,7 @@ scene("game", ({ level }) => {
   timer.action(()=> {
     timer.time -= dt()
     timer.text = timer.time.toFixed(0)
-    if(timer.time <= 0 || timer.time > 200) {
+    if(timer.time <= 0 || timer.time > 101) {
       go('lose')
     }
   })
@@ -350,21 +363,15 @@ scene("game", ({ level }) => {
 
 // collision management
 
-  player.collides('mushroom', (m) => {
+  player.collides('modeavion', (m) => {
     destroy(m)
-    player.planemode(6)
+    player.planemode(10)
   })
 
-  player.collides('slowshroom', (s)=> {
+  player.collides('dangerous', (s)=> {
     destroy(s)
-    timer.time -= 20 
+    timer.time -= 50 
 
-  })
-
-  player.collides('coin', (c) => {
-    destroy(c)
-    scoreLabel.value++
-    scoreLabel.text = scoreLabel.value
   })
 
   action('dangerous', (d) => {
@@ -387,15 +394,7 @@ scene("game", ({ level }) => {
   })
 
   player.collides('pipe', () => {
-    completeLevel -= 1
-    if(completeLevel == 0){
       go('win')
-    }
-    else{
-      go('game', {
-        level: (level + 1)  % maps.length,
-      })
-    }
   })
 
   // motion management
